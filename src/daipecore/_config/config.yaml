@@ -1,0 +1,23 @@
+parameters:
+  daipecore:
+    logger:
+      type: default
+
+services:
+  daipecore.logger:
+    class: logging.Logger
+    factory: ['@daipecore.logger.DynamicLoggerFactory', 'create']
+
+  daipecore.logger.LoggerFactory:
+    tags:
+      - {name: 'daipe.logger.factory', alias: 'default'}
+
+  daipecore.logger.DynamicLoggerFactory:
+    arguments:
+      - !tagged_aliased ['daipe.logger.factory', '%daipecore.logger.type%']
+
+  daipecore.function.ArgumentResolver:
+    arguments:
+      - '@daipecore.logger'
+
+  daipecore.function.ArgumentsResolver:
