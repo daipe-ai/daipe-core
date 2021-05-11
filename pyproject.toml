@@ -42,9 +42,6 @@ logger-bundle = "^0.7.0"
 [tool.poetry.plugins."pyfony.bundle"]
 create = "daipecore.DaipeCore:DaipeCore"
 
-[tool.poetry.plugins."daipe"]
-input_decorators_mapping = "daipecore.lineage.mapping:get_mapping"
-
 [pyfony.bootstrap]
 container_init = "pyfonycore.container.container_init:init_with_current_bundle"
 root_module_name = "daipecore"

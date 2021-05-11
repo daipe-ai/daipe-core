@@ -21,3 +21,18 @@ services:
       - '@daipecore.logger'
 
   daipecore.function.ArgumentsResolver:
+
+  daipecore.lineage.argument.ArgumentClassResolver:
+    arguments:
+      - !tagged 'lineage.decorator.function.argument_mapping'
+
+  daipecore.lineage.argument.ArgumentParser:
+
+  daipecore.lineage.notebook_function_parser:
+    class: daipecore.lineage.InputDecoratorParser
+    arguments:
+      - 'notebook_function'
+      - 'daipecore.lineage.InputDecorator'
+      - 'InputDecorator'
+    tags:
+      - 'lineage.decorator.parser'
