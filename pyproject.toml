@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "daipe-core"
-version = "0.8.0b1"
+version = "0.8.0b2"
 description = "Daipe framework core"
 readme = "README.md"
 repository = "https://github.com/daipe-ai/daipe-core"
