@@ -7,7 +7,7 @@ def _read():
     ]
 
     if len(bootstrap_config_readers) == 0:
-        from pyfonycore.bootstrap.config import config_reader
+        from daipecore.bootstrap import config_reader
 
         return config_reader.read()
     elif len(bootstrap_config_readers) == 1:
