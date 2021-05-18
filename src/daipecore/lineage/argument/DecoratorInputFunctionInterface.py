@@ -1,6 +1,8 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 
 
 class DecoratorInputFunctionInterface(ABC):
-
-    pass
+    @property
+    @abstractmethod
+    def identifier(self):
+        pass
