@@ -1,11 +1,7 @@
-import sys
 import os
 from pathlib import Path
 from pyfonycore.bootstrap.config.Config import Config
-
-
-def is_jupyter_server_running():
-    return "ipykernel" in sys.modules
+from daipecore.environment_detector import is_jupyter_server_running
 
 
 def set_jupyter_cwd():
