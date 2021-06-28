@@ -28,6 +28,7 @@ python = "^3.7"
 pyfony-bundles = "0.4.*"
 injecta = "0.10.*"
 logger-bundle = "^0.7.0"
+console-bundle = ">=0.4.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
@@ -38,6 +39,9 @@ pep8-naming = "^0.11.1"
 poethepoet = "^0.10.0"
 pyfony-core = "0.8.*"
 logger-bundle = "^0.7.0"
+
+[tool.poetry.scripts]
+daipe = "consolebundle.CommandRunner:run_command"
 
 [tool.poetry.plugins."pyfony.bundle"]
 create = "daipecore.DaipeCore:DaipeCore"
