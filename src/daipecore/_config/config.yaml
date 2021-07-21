@@ -36,3 +36,19 @@ services:
       - 'InputDecorator'
     tags:
       - 'lineage.decorator.parser'
+
+  daipecore.widgets.WidgetsFactory:
+    arguments:
+      - !tagged "widgets.factory"
+
+  daipecore.widgets.ArgumentParser:
+    class: argparse.ArgumentParser
+
+  daipecore.widgets.CommandLineWidgets:
+    arguments:
+      - '@daipecore.widgets.ArgumentParser'
+    tags:
+      - "widgets.factory"
+
+  daipecore.widgets.Widgets:
+    factory: ['@daipecore.widgets.WidgetsFactory', 'create']
