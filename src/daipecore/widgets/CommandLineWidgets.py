@@ -24,6 +24,12 @@ class CommandLineWidgets(Widgets):
             "--" + name, nargs="+", dest=name, choices=choices, default=default_values, help=label, required=False
         )
 
+    def remove(self, name: str):
+        pass
+
+    def remove_all(self):
+        pass
+
     def get_value(self, name: str):
         input_arguments = self.__argument_parser.parse_known_args()[0]
         values = input_arguments.__dict__
