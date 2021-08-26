@@ -19,5 +19,13 @@ class Widgets(ABC):
         pass
 
     @abstractmethod
+    def remove(self, name: str):
+        pass
+
+    @abstractmethod
+    def remove_all(self):
+        pass
+
+    @abstractmethod
     def should_be_resolved(self) -> bool:
         pass
