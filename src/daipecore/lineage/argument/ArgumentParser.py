@@ -2,6 +2,7 @@ import _ast
 from daipecore.lineage.argument.FunctionCallAttribute import FunctionCallAttribute
 from daipecore.lineage.argument.FunctionLink import FunctionLink
 from daipecore.lineage.argument.ArgumentClassResolver import ArgumentClassResolver
+from daipecore.decorator.utils import get_decorator_id
 
 
 class ArgumentParser:
@@ -10,7 +11,7 @@ class ArgumentParser:
 
     def parse(self, arg: _ast.expr):
         if isinstance(arg, _ast.Call):  # called function like read_table("my_table")
-            argument_class = self.__function_argument_parser_resolver.resolve(arg.func.id)
+            argument_class = self.__function_argument_parser_resolver.resolve(get_decorator_id(arg))
             return argument_class(*[self.parse(subarg) for subarg in arg.args])
 
         if isinstance(arg, _ast.Name):  # function name like my_previous_notebook_function
