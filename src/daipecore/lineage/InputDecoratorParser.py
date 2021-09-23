@@ -2,6 +2,7 @@ import _ast
 from daipecore.lineage.DecoratorParserInterface import DecoratorParserInterface
 from injecta.module import attribute_loader
 from daipecore.lineage.argument.ArgumentParser import ArgumentParser
+from daipecore.decorator.utils import get_decorator_id
 
 
 class InputDecoratorParser(DecoratorParserInterface):
@@ -16,7 +17,7 @@ class InputDecoratorParser(DecoratorParserInterface):
 
         class_ = attribute_loader.load(self.__module_name, self.__class_name)
 
-        return class_(decorator.func.id, args)
+        return class_(get_decorator_id(decorator), args)
 
     def get_name(self) -> str:
         return self.__name
