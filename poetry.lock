@@ -79,7 +79,7 @@ colorama = {version = "*", markers = "sys_platform == \"win32\""}
 
 [[package]]
 name = "console-bundle"
-version = "0.4.0"
+version = "0.5.0"
 description = "Console Bundle for the Pyfony Framework"
 category = "main"
 optional = false
@@ -426,7 +426,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "2f3ecc05a0e2b1d780ed76c201904b8429623d55f2fb7de0f405065de55bba07"
+content-hash = "f815767bf7c0c517f8878432019fe3c3efde46bea96a3fb6b978130aecda9a35"
 
 [metadata.files]
 appdirs = [
@@ -457,7 +457,7 @@ colorlog = [
     {file = "colorlog-4.8.0.tar.gz", hash = "sha256:59b53160c60902c405cdec28d38356e09d40686659048893e026ecbd589516b1"},
 ]
 console-bundle = [
-    {file = "console_bundle-0.4.0-py3-none-any.whl", hash = "sha256:6fb19484d5ebf6904e60646fb253558c3eebb6335d283088ddb7054f83505921"},
+    {file = "console_bundle-0.5.0-py3-none-any.whl", hash = "sha256:209351f03f19796c1677cae38416d6ffbf8158c2c217cf85f0e0c3f5ff16b7c2"},
 ]
 flake8 = [
     {file = "flake8-3.9.0-py2.py3-none-any.whl", hash = "sha256:12d05ab02614b6aee8df7c36b97d1a3b2372761222b19b58621355e82acddcff"},

@@ -28,7 +28,7 @@ python = "^3.7"
 pyfony-bundles = "0.4.*"
 injecta = "0.10.*"
 logger-bundle = "^0.7.0"
-console-bundle = ">=0.4.0"
+console-bundle = "^0.5"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
