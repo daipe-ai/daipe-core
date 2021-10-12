@@ -20,7 +20,10 @@ class ArgumentParser:
         if isinstance(arg, _ast.Attribute):  # attribute of possible function call: table_params("my_table").some_attribute
             return FunctionCallAttribute(self.parse(arg.value), arg.attr)
 
-        if isinstance(arg, _ast.Str):
+        if isinstance(arg, _ast.Constant):
+            return arg.value
+
+        if hasattr(_ast, "Str") and isinstance(arg, _ast.Str):
             return arg.s
 
         raise Exception(f"Unexpected argument type: {type(arg)}")
