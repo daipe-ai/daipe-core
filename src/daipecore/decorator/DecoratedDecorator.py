@@ -31,7 +31,7 @@ class DecoratedDecorator:
             if decorated_function.__module__ != "__main__":
                 return func
 
-            if isinstance(decorator_instance, InputDecorator):
+            if isinstance(decorator_instance, InputDecorator) and decorator_instance.immediate_execution_enabled:
                 container = ContainerManager.get_container()
 
                 processed_arguments = decorator_instance.prepare_arguments(container)
