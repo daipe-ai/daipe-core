@@ -1,11 +1,16 @@
-import sys
 import os
 from pathlib import Path
 from pyfonycore.bootstrap.config.Config import Config
 
 
 def is_jupyter_server_running():
-    return "ipykernel" in sys.modules
+    try:
+        import IPython
+
+    except ImportError:
+        return False
+
+    return IPython.get_ipython().__class__.__module__ == "ipykernel.zmqshell"
 
 
 def set_jupyter_cwd():
