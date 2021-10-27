@@ -1,5 +1,7 @@
+from box import Box
 from injecta.package.path_resolver import resolve_path
 from pyfonybundles.Bundle import Bundle
+from daipecore.detector import is_cli
 
 
 class DaipeCore(Bundle):
@@ -17,3 +19,8 @@ class DaipeCore(Bundle):
         }
 
         return raw_config
+
+    def modify_parameters(self, parameters: Box) -> Box:
+        if is_cli():
+            parameters.daipecore.pandas.dataframe.show_method = "pandas_show"
+        return parameters

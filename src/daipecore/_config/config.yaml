@@ -2,6 +2,9 @@ parameters:
   daipecore:
     logger:
       type: default
+    pandas:
+      dataframe:
+        show_method: # Default is None, is set based on running environment
 
 services:
   daipecore.logger:
@@ -15,6 +18,17 @@ services:
   daipecore.logger.DynamicLoggerFactory:
     arguments:
       - !tagged_aliased ['daipe.logger.factory', '%daipecore.logger.type%']
+
+  daipecore.pandas.dataframe.PandasDataFrameShowMethod:
+    tags:
+      - {name: 'daipecore.pandas.dataframe.show_method', alias: pandas_show}
+
+  daipecore.pandas.dataframe.show_method:
+    factory: ['@daipecore.pandas.dataframe.PandasDataFrameShowMethodInjector', 'get']
+
+  daipecore.pandas.dataframe.PandasDataFrameShowMethodInjector:
+    arguments:
+      - !tagged_aliased ['daipecore.pandas.dataframe.show_method', '%daipecore.pandas.dataframe.show_method%']
 
   daipecore.function.ArgumentResolver:
     arguments:
