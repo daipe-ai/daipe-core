@@ -20,8 +20,9 @@ class ContainerManager:
     @staticmethod
     def _create_container():
         from daipecore.bootstrap.config import bootstrap_config
+        from daipecore.bootstrap.container_factory import create_container
 
         if "APP_ENV" not in os.environ:
             raise Exception(f"Set APP_ENV env variable to define environment ({', '.join(bootstrap_config.allowed_environments)})")
 
-        return bootstrap_config.container_init_function(os.environ["APP_ENV"], bootstrap_config)
+        return create_container(os.environ["APP_ENV"])
