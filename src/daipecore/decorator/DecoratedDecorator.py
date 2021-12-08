@@ -5,6 +5,7 @@ import re
 from daipecore.decorator.ContainerManager import ContainerManager
 from daipecore.decorator.InputDecorator import InputDecorator
 from daipecore.decorator.OutputDecorator import OutputDecorator
+from daipecore.decorator.InstanceMembersTransformer import InstanceMembersTransformer
 
 
 class DecoratedDecorator:
@@ -44,6 +45,8 @@ class DecoratedDecorator:
                 previous_decorator_instance = decorator_instance.previous_decorator_instance
 
                 if isinstance(previous_decorator_instance, OutputDecorator):
+                    instance_members_transformer: InstanceMembersTransformer = container.get(InstanceMembersTransformer)
+                    instance_members_transformer.transform_members(previous_decorator_instance, container)
                     previous_decorator_instance.process_result(result, container)
 
             return decorator_instance
