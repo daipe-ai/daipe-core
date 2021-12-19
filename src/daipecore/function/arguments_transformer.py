@@ -9,7 +9,7 @@ def transform(arg, container: ContainerInterface):
         arg = transform(arg.to_string(), container)
 
     if isinstance(arg, types.FunctionType):
-        arg = transform(arg(container), container)
+        arg = transform(arg()(container), container)
 
     if not isinstance(arg, str):
         return arg
