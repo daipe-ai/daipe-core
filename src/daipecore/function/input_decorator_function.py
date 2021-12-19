@@ -4,9 +4,12 @@ from daipecore.function import arguments_transformer
 
 def input_decorator_function(func):
     def wrapper(*args, **kwargs):
-        parameters = ContainerManager.get_container().get_parameters()
+        if func.__module__ != "__main__":
+            return None
 
-        transformed_args = tuple(arguments_transformer.transform(arg, parameters) for arg in args)
+        container = ContainerManager.get_container()
+
+        transformed_args = tuple(arguments_transformer.transform(arg, container) for arg in args)
 
         return func(*transformed_args, **kwargs)
 
