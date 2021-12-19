@@ -6,13 +6,13 @@ from daipecore.function import arguments_transformer
 def input_decorator_function(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
-        if func.__module__ != "__main__":
-            return None
+        def executor():
+            container = ContainerManager.get_container()
 
-        container = ContainerManager.get_container()
+            transformed_args = tuple(arguments_transformer.transform(arg, container) for arg in args)
 
-        transformed_args = tuple(arguments_transformer.transform(arg, container) for arg in args)
+            return func(*transformed_args, **kwargs)
 
-        return func(*transformed_args, **kwargs)
+        return executor
 
     return wrapper

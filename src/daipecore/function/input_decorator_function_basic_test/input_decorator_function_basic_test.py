@@ -1,17 +1,8 @@
 import os
 from daipecore.decorator.notebook_function import notebook_function
-from daipecore.function.input_decorator_function import input_decorator_function
-from injecta.container.ContainerInterface import ContainerInterface
+from daipecore.function.input_decorator_function_basic_test.decorator_functions import test_input_function
 
 os.environ["APP_ENV"] = "test"
-
-
-@input_decorator_function
-def test_input_function():
-    def wrapper(container: ContainerInterface):
-        return 155
-
-    return wrapper
 
 
 @notebook_function(test_input_function())

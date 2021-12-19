@@ -46,7 +46,7 @@ class ArgumentResolver:
             output = self.__resolve_string_argument(decorator_argument.to_string())
             return self.__check_type(output, argument_type, function_argument.name)
         if isinstance(decorator_argument, types.FunctionType):
-            return decorator_argument(self.__container)
+            return decorator_argument()(self.__container)
         # isinstance(decorator_argument, InputDecorator) does not work probably due to some cyclic import
         if hasattr(decorator_argument, "_is_decorator") and decorator_argument._is_decorator is True:
             return decorator_argument.result
