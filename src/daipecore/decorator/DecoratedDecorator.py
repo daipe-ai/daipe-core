@@ -2,6 +2,8 @@
 import inspect
 import types
 import re
+from functools import update_wrapper
+
 from daipecore.decorator.ContainerManager import ContainerManager
 from daipecore.decorator.InputDecorator import InputDecorator
 from daipecore.decorator.OutputDecorator import OutputDecorator
@@ -10,6 +12,7 @@ from daipecore.decorator.OutputDecorator import OutputDecorator
 class DecoratedDecorator:
     def __init__(self, original_decorator):
         self._original_decorator = original_decorator
+        update_wrapper(self, original_decorator.__init__)
 
     def __call__(self, *args, **kwargs):
         if args and isinstance(args[0], types.FunctionType):
