@@ -70,3 +70,5 @@ services:
 
   daipecore.widgets.Widgets:
     factory: ['@daipecore.widgets.WidgetsFactory', 'create']
+
+  daipecore.shortcut.ShortcutCreator:
