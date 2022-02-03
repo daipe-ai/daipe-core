@@ -40,11 +40,14 @@ class DecoratedDecorator:
                 processed_arguments = decorator_instance.prepare_arguments(container)
                 result = decorated_function(*processed_arguments)
 
+                previous_decorator_instance = decorator_instance.previous_decorator_instance
+
+                if isinstance(previous_decorator_instance, OutputDecorator):
+                    result = previous_decorator_instance.modify_result(result, container)
+
                 decorator_instance.set_result(result)
 
                 decorator_instance.after_execution(container)
-
-                previous_decorator_instance = decorator_instance.previous_decorator_instance
 
                 if isinstance(previous_decorator_instance, OutputDecorator):
                     previous_decorator_instance.process_result(result, container)

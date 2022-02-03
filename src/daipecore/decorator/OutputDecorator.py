@@ -4,5 +4,8 @@ from daipecore.decorator.DecoratedFunctionInjector import DecoratedFunctionInjec
 
 
 class OutputDecorator(BaseDecorator, metaclass=DecoratedFunctionInjector):
+    def modify_result(self, result, container: ContainerInterface):
+        return result
+
     def process_result(self, result, container: ContainerInterface):
         pass
