@@ -1,3 +1,4 @@
+from pathlib import Path
 from box import Box
 from injecta.package.path_resolver import resolve_path
 from pyfonybundles.Bundle import Bundle
@@ -11,11 +12,16 @@ class DaipeCore(Bundle):
 
         from daipecore.bootstrap.config import bootstrap_config
 
+        root_module_name = bootstrap_config.root_module_name
+        root_module_path = resolve_path(bootstrap_config.root_module_name).replace("\\", "/")
+        project_root_path = Path(root_module_path).parent.parent.as_posix()
+
         raw_config["parameters"]["daipe"] = {
+            "project_root": project_root_path,
             "root_module": {
-                "name": bootstrap_config.root_module_name,
-                "path": resolve_path(bootstrap_config.root_module_name).replace("\\", "/"),
-            }
+                "name": root_module_name,
+                "path": root_module_path,
+            },
         }
 
         return raw_config
