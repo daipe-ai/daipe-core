@@ -36,6 +36,8 @@ services:
 
   daipecore.function.ArgumentsResolver:
 
+  daipecore.decorator.InstanceMembersTransformer:
+
   daipecore.lineage.argument.ArgumentMapping:
     tags:
       - 'lineage.decorator.function.argument_mapping'
