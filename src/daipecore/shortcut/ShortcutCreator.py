@@ -15,8 +15,6 @@ class ShortcutCreator:
         self.__write_code(code, daipe_py_path)
 
     def __prepare_code(self):
-        bundles = pyfony_bundles_loader.load_bundles()
-
         def get_root_module_name(bundle: Bundle):
             return bundle.__module__.split(".")[0]
 
@@ -30,6 +28,8 @@ class ShortcutCreator:
 
             with open(imports_module_path, "r", encoding="utf-8") as f:
                 return header + "\n" + f.read()
+
+        bundles = sorted(pyfony_bundles_loader.load_bundles(), key=lambda bundle: get_root_module_name(bundle))
 
         import_module_names = [get_root_module_name(bundle) for bundle in bundles]
         import_modules_mapping = {
