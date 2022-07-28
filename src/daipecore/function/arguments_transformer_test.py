@@ -16,7 +16,7 @@ class FakeContainer(ContainerInterface):
         raise Exception("Method must not be called")
 
 
-class arguments_transformer_test(unittest.TestCase):  # noqa: N801
+class arguments_transformer_test(unittest.TestCase):  # pylint: disable=invalid-name
     def test_basic(self):
         container = FakeContainer(Box({"base_path": "/foo/bar"}))
 
@@ -25,7 +25,7 @@ class arguments_transformer_test(unittest.TestCase):  # noqa: N801
         self.assertEqual("/foo/bar/file.txt", result)
 
     def test_stringable_input(self):
-        class stringable_class(StringableParameterInterface):  # noqa: N801
+        class stringable_class(StringableParameterInterface):  # pylint: disable=invalid-name
             def __init__(self, placeholder_name: str):
                 self.__placeholder_name = placeholder_name
 

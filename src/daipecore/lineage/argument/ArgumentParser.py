@@ -23,7 +23,7 @@ class ArgumentParser:
         if isinstance(arg, _ast.Constant):
             return arg.value
 
-        if hasattr(_ast, "Str") and isinstance(arg, _ast.Str):
-            return arg.s
+        if hasattr(_ast, "Str") and isinstance(arg, _ast.Str):  # pylint: disable=no-member # pyre-ignore[16]
+            return arg.s  # pyre-ignore[16]
 
         raise Exception(f"Unexpected argument type: {type(arg)}")

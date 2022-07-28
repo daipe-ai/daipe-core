@@ -10,7 +10,7 @@ def watch_configs(configs_dir: str, init_container: Callable):
         try:
             init_container()
             watcher_logger.info("New container ready")
-        except Exception as e:
+        except Exception as e:  # pylint: disable=broad-except
             watcher_logger.error("Container initialization failed")
             watcher_logger.debug(str(e))
 

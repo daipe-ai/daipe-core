@@ -8,5 +8,5 @@ try:
 
     raise Exception("Notebook function without parentheses must fail")
 
-except Exception as e:
+except Exception as e:  # pylint: disable=broad-except
     assert str(e) == "Use @notebook_function() instead of @notebook_function please"

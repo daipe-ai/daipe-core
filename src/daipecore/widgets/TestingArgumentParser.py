@@ -16,7 +16,8 @@ class TestingArgumentParser(ArgumentParser):
         for action in container:
             if "/".join(action.option_strings) == name:
                 return action
-            elif action.metavar == name:
+            if action.metavar == name:
                 return action
-            elif action.dest == name:
+            if action.dest == name:
                 return action
+        return None

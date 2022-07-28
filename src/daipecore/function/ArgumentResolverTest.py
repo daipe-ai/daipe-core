@@ -78,7 +78,7 @@ class ArgumentResolverTest(unittest.TestCase):
                 return Box({"name": "Peter", "surname": "Novak"})
 
             def get(self, ident):
-                if ident == DummyClass.__module__ or ident.__module__ == DummyClass.__module__:
+                if ident == DummyClass.__module__ or ident.__module__ == DummyClass.__module__:  # pylint: disable=consider-using-in
                     return DummyClass()
 
                 raise Exception(f"Unexpected service {ident}")

@@ -48,7 +48,7 @@ class ArgumentResolver:
         if isinstance(decorator_argument, types.FunctionType):
             return decorator_argument()(self.__container)
         # isinstance(decorator_argument, InputDecorator) does not work probably due to some cyclic import
-        if hasattr(decorator_argument, "_is_decorator") and decorator_argument._is_decorator is True:
+        if hasattr(decorator_argument, "_is_decorator") and decorator_argument._is_decorator is True:  # pylint: disable=protected-access
             return decorator_argument.result
 
         return self.__check_type(decorator_argument, argument_type, function_argument.name)

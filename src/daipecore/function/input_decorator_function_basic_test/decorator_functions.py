@@ -4,7 +4,7 @@ from injecta.container.ContainerInterface import ContainerInterface
 
 @input_decorator_function
 def test_input_function():
-    def wrapper(container: ContainerInterface):
+    def wrapper(container: ContainerInterface):  # pylint: disable=unused-argument
         return 155
 
     return wrapper

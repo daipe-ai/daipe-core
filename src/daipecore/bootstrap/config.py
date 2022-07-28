@@ -7,15 +7,16 @@ def _read():
     ]
 
     if len(bootstrap_config_readers) == 0:
-        from pyfonycore.bootstrap.config import config_reader
+        from pyfonycore.bootstrap.config import config_reader  # pylint: disable=import-outside-toplevel
 
         return config_reader.read()
-    elif len(bootstrap_config_readers) == 1:
+
+    if len(bootstrap_config_readers) == 1:
         config_loader = bootstrap_config_readers[0].load()
 
         return config_loader()
-    else:
-        raise Exception("Multiple bootstrap_config_reader entry points defined in project packages")
+
+    raise Exception("Multiple bootstrap_config_reader entry points defined in project packages")
 
 
 bootstrap_config = _read()

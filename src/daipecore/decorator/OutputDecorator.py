@@ -4,7 +4,7 @@ from daipecore.decorator.DecoratedFunctionInjector import DecoratedFunctionInjec
 
 
 class OutputDecorator(BaseDecorator, metaclass=DecoratedFunctionInjector):
-    def modify_result(self, result, container: ContainerInterface):
+    def modify_result(self, result, container: ContainerInterface):  # pylint: disable=unused-argument
         return result
 
     def process_result(self, result, container: ContainerInterface):

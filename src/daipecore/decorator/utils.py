@@ -8,7 +8,8 @@ def is_decorator(decorator: ast.Call) -> bool:
 def get_decorator_id(decorator: ast.Call) -> str:
     if isinstance(decorator.func, ast.Name):
         return decorator.func.id
-    elif isinstance(decorator.func, ast.Attribute):
+
+    if isinstance(decorator.func, ast.Attribute):
         return decorator.func.attr
-    else:
-        raise Exception(f"{decorator.func} is neither ast.Name nor ast.Attribute")
+
+    raise Exception(f"{decorator.func} is neither ast.Name nor ast.Attribute")
