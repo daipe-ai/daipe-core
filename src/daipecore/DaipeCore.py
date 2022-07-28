@@ -9,7 +9,7 @@ class DaipeCore(Bundle):
         if "daipe" in raw_config["parameters"]:
             raise Exception("parameters.daipe must not be explicitly defined")
 
-        from daipecore.bootstrap.config import bootstrap_config
+        from daipecore.bootstrap.config import bootstrap_config  # pylint: disable=import-outside-toplevel
 
         raw_config["parameters"]["daipe"] = {
             "root_module": {

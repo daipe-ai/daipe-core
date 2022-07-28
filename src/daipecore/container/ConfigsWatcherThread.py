@@ -20,7 +20,7 @@ class ConfigsWatcherThread(threading.Thread):
         threading.excepthook = excepthook
 
     def run(self):
-        from datetime import datetime as dt
+        from datetime import datetime as dt  # pylint: disable=import-outside-toplevel
 
         self._watcher_logger.info(f"Watching of {self._configs_dir} started")
 

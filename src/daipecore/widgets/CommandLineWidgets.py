@@ -1,3 +1,4 @@
+from typing import Optional
 from daipecore.widgets.Widgets import Widgets
 from argparse import ArgumentParser
 from daipecore.detector import is_cli
@@ -7,10 +8,10 @@ class CommandLineWidgets(Widgets):
     def __init__(self, argument_parser: ArgumentParser):
         self.__argument_parser = argument_parser
 
-    def add_text(self, name: str, default_value: str = "", label: str = None):
+    def add_text(self, name: str, default_value: str = "", label: Optional[str] = None):
         self.__argument_parser.add_argument("--" + name, dest=name, default=default_value, help=label)
 
-    def add_select(self, name: str, choices: list, default_value: str, label: str = None):
+    def add_select(self, name: str, choices: list, default_value: str, label: Optional[str] = None):
         if None in choices:
             raise Exception("Value None cannot be used as choice, use empty string instead")
 
@@ -19,7 +20,7 @@ class CommandLineWidgets(Widgets):
 
         self.__argument_parser.add_argument("--" + name, dest=name, choices=choices, default=default_value, help=label, required=False)
 
-    def add_multiselect(self, name: str, choices: list, default_values: list, label: str = None):
+    def add_multiselect(self, name: str, choices: list, default_values: list, label: Optional[str] = None):
         self.__argument_parser.add_argument(
             "--" + name, nargs="+", dest=name, choices=choices, default=default_values, help=label, required=False
         )

@@ -4,7 +4,7 @@ from daipecore.lineage.argument.ArgumentMappingInterface import ArgumentMappingI
 
 class ArgumentClassResolver:
     def __init__(self, argument_mappings: List[ArgumentMappingInterface]):
-        all_mapping = dict()
+        all_mapping = {}
 
         for argument_mapping in argument_mappings:
             all_mapping = {**all_mapping, **argument_mapping.get_mapping()}
