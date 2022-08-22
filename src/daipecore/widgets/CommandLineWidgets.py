@@ -1,7 +1,6 @@
 from typing import Optional
 from daipecore.widgets.Widgets import Widgets
 from argparse import ArgumentParser
-from daipecore.detector import is_cli
 
 
 class CommandLineWidgets(Widgets):
@@ -46,4 +45,4 @@ class CommandLineWidgets(Widgets):
         return value
 
     def should_be_resolved(self):
-        return is_cli()
+        return False
